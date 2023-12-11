@@ -7,9 +7,9 @@ load_dotenv()
 client = OpenAI(api_key = os.getenv("OPENAI_API_KEY"))
 
 
-input = open("input.txt", "r")
-output = open("output.txt", "w")
-input_info = open("input_info.txt", "r")
+input = open("input.txt", "r", encoding = "utf8")
+output = open("output.txt", "w", encoding = "utf8")
+input_info = open("input_info.txt", "r", encoding = "utf8")
 
 print("Generating Response")
 start = time.time()
@@ -25,4 +25,4 @@ completion = client.chat.completions.create(
 end = time.time()
 output.write(completion.choices[0].message.content)
 print("Finished!")
-print("Response generated to " + output.name + " in " + str(round(end - start), 2) + " seconds")
+print("Response generated to " + output.name + " in " + str(round(end - start, 2)) + " seconds")
